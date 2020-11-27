@@ -55,18 +55,18 @@ class NewPaletteForm extends Component {
     this.setState({ colors: [] });
   }
   addRandomColor() {
-    const allColors = this.props.palettes.map(p => p.colors).flat();
-    let rand;
+    //const allColors = this.props.palettes.map(p => p.colors).flat();
+    //let rand;
     let randomColor;
     let isDuplicateColor = true;
-    // while (isDuplicateColor) {
-    //   rand = Math.floor(Math.random() * allColors.length);
-    //   randomColor = allColors[rand];
-    //   isDuplicateColor = this.state.colors.some(
-    //     color => color.name === randomColor.name
-    //   );
-    // }
-    // this.setState({ colors: [...this.state.colors, randomColor] });
+    while (isDuplicateColor) {
+      // rand = Math.floor(Math.random() * allColors.length);
+      // randomColor = allColors[rand];
+      isDuplicateColor = this.state.colors.some(
+        color => color.name === randomColor.name
+      );
+    }
+    this.setState({ colors: [...this.state.colors, randomColor] });
   }
   handleSubmit(newPalette) {
     newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-");
